@@ -6,7 +6,6 @@
     "dev": "yarn dev:aspida && yarn dev:next",
     "dev:next": "next dev -p 1234",
     "dev:aspida": "aspida",
-    "dev:openapi2adpida": "npx openapi2aspida -i openAPI/api.yml",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

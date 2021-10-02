@@ -1,4 +1,6 @@
 /* eslint-disable */
+import type * as Types from '../../@types'
+
 export type Methods = {
   get: {
     query: {
@@ -8,21 +10,14 @@ export type Methods = {
     }
 
     status: 200
-
     /** OK */
-    resBody: {
-      id: number
-      title: string
-      author: string
-    }
+    resBody: Types.Post
   }
 
   patch: {
     status: 200
-
     /** OK */
-    resBody: {
-    }
+    resBody: Types.Post
 
     reqBody: {
       title: string

@@ -1,37 +1,30 @@
 /* eslint-disable */
+import type * as Types from '../@types'
+
 export type Methods = {
   /** 記事取得 */
   get: {
     query: {
-      id?: string;
-      title?: string;
-      author?: string;
-    };
+      id: string
+      title: string
+      author: string
+    }
 
-    status: 200;
+    status: 200
     /** User Found */
-    resBody: {
-      id: number;
-      title: string;
-      author: string;
-    }[];
-  };
+    resBody: Types.Post[]
+  }
 
   /** 記事追加 */
   post: {
-    status: 200;
-
+    status: 200
     /** OK */
-    resBody: {
-      id: number;
-      title: string;
-      author: string;
-    };
+    resBody: Types.Post
 
     reqBody: {
-      id: number;
-      title: string;
-      author: string;
-    };
-  };
-};
+      id: number
+      title: string
+      author: string
+    }
+  }
+}

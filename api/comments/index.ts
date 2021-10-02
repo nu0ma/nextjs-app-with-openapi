@@ -1,15 +1,12 @@
 /* eslint-disable */
+import type * as Types from '../@types'
+
 export type Methods = {
   /** コメント追加 */
   post: {
     status: 200
-
     /** User Created */
-    resBody: {
-      id: number
-      body: string
-      postId: number
-    }
+    resBody: Types.Comment
 
     /** Post the necessary fields for the API to create a new user. */
     reqBody: {
@@ -27,10 +24,6 @@ export type Methods = {
 
     status: 200
     /** OK */
-    resBody: {
-      id: number
-      body: string
-      postId: number
-    }[]
+    resBody: Types.Comment[]
   }
 }
