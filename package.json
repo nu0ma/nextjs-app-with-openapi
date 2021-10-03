@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "yarn dev:aspida && yarn dev:next",
+    "dev": "yarn dev:next",
     "dev:next": "next dev -p 1234",
-    "dev:aspida": "aspida",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
