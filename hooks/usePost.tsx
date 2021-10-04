@@ -6,11 +6,7 @@ export const usePost = () => {
     useState<{ id: number; title: string; author: string }[]>();
 
   const fetchPost = async () => {
-    const res = await apiClient.posts.get({
-      query: {
-        id: '2',
-      },
-    });
+    const res = await apiClient.posts.get();
     setPosts(res.body);
   };
 

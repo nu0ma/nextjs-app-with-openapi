@@ -92,13 +92,13 @@ const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
        * 記事取得
        * @returns User Found
        */
-      get: (option: { query: Methods1['get']['query'], config?: T }) =>
+      get: (option?: { query?: Methods1['get']['query'], config?: T }) =>
         fetch<Methods1['get']['resBody'], BasicHeaders, Methods1['get']['status']>(prefix, PATH1, GET, option).json(),
       /**
        * 記事取得
        * @returns User Found
        */
-      $get: (option: { query: Methods1['get']['query'], config?: T }) =>
+      $get: (option?: { query?: Methods1['get']['query'], config?: T }) =>
         fetch<Methods1['get']['resBody'], BasicHeaders, Methods1['get']['status']>(prefix, PATH1, GET, option).json().then(r => r.body),
       /**
        * 記事追加
