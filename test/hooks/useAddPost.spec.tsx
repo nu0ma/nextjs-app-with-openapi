@@ -1,6 +1,5 @@
 import { renderHook, RenderHookResult } from '@testing-library/react-hooks';
 import { ReactNode } from 'react';
-import { act } from 'react-test-renderer';
 
 import { useAddPost } from '@/hooks/useAddPost';
 

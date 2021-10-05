@@ -5,7 +5,8 @@ export const useDeletePost = (postId: number) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const deletePost = async () => {
-    await apiClient.posts._id(postId.toString()).delete();
+    const res = await apiClient.posts._id(postId.toString()).delete();
+    return res.body;
   };
 
   const handleClick = async () => {
