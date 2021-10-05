@@ -18,6 +18,7 @@ import {
   ModalOverlay,
   Text,
   useDisclosure,
+  useToast,
   VStack,
 } from '@chakra-ui/react';
 import { EditIcon } from '@chakra-ui/icons';
@@ -34,6 +35,9 @@ type Input = {
 };
 
 export const EditPost = (props: Props) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast = useToast();
+  const { editPost } = useEditPost(props.postId);
   const {
     register,
     handleSubmit,
@@ -43,13 +47,14 @@ export const EditPost = (props: Props) => {
     mode: 'all',
   });
 
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const { editPost } = useEditPost(props.postId);
-
   const onSubmit: SubmitHandler<Input> = async (data) => {
     const { title, author } = data;
-    editPost(title, author);
+    const res = await editPost(title, author);
+    toast({
+      title: `Edit ${res.title}`,
+      status: 'success',
+      duration: 900,
+    });
     onClose();
     reset();
   };

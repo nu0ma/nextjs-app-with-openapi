@@ -12,7 +12,9 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  toast,
   useDisclosure,
+  useToast,
 } from '@chakra-ui/react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useAddPost } from '@/hooks/useAddPost';
@@ -32,13 +34,20 @@ export const AddPost = () => {
   } = useForm({
     mode: 'all',
   });
+  const toast = useToast();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { addPost } = useAddPost();
 
   const onSubmit: SubmitHandler<Input> = async (data) => {
     const { id, title, author } = data;
-    addPost(id, title, author);
+    const res = await addPost(id, title, author);
+    toast({
+      title: `${res.title} added.`,
+      status: 'success',
+      duration: 900,
+    });
+
     onClose();
     reset();
   };
