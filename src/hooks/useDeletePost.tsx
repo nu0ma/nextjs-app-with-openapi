@@ -1,5 +1,6 @@
 import { apiClient } from '@/lib/apiClient';
 import { useDisclosure, useToast } from '@chakra-ui/react';
+import { mutate } from 'swr';
 
 export const useDeletePost = (postId: number) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -7,12 +8,13 @@ export const useDeletePost = (postId: number) => {
 
   const deletePost = async () => {
     const res = await apiClient.posts._id(postId.toString()).delete();
-    console.log('deleted', res.body);
+    mutate('/api/posts');
     return res.body;
   };
 
   const handleClick = async () => {
     await deletePost();
+
     toast({
       title: `Deleted.`,
       status: 'success',

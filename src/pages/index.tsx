@@ -1,4 +1,4 @@
-import { Alert, Box, Flex, Spacer, Spinner, Text } from '@chakra-ui/react';
+import { Alert, Flex, Spacer, Spinner, Text } from '@chakra-ui/react';
 import type { NextPage } from 'next';
 import { Layout } from 'src/components/layout/Layout';
 import { PostTable } from 'src/components/posts/PostTable';
