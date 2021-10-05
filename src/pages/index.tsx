@@ -1,15 +1,18 @@
-import { Box, Flex, Spacer, Spinner, Text } from '@chakra-ui/react';
+import { Alert, Box, Flex, Spacer, Spinner, Text } from '@chakra-ui/react';
 import type { NextPage } from 'next';
 import { Layout } from 'src/components/layout/Layout';
 import { PostTable } from 'src/components/posts/PostTable';
 import { AddPost } from 'src/components/posts/AddPost';
-import { usePost } from '../hooks/usePost';
-import useAspidaSWR from '@aspida/swr';
-import { apiClient } from '@/lib/apiClient';
+
+import useSWR from 'swr';
+import { fetcher } from '@/lib/fetcher';
+import { Post } from 'src/api/@types';
 
 const Home: NextPage = () => {
-  // const { posts } = usePost();
-  const { data, error, mutate } = useAspidaSWR(apiClient.posts, 'get');
+  const { data, error } = useSWR<Post[]>('/api/posts', fetcher);
+
+  if (error)
+    return <Alert status="error"> Loading failed: {error.message} </Alert>;
 
   return (
     <Layout>
@@ -18,12 +21,12 @@ const Home: NextPage = () => {
         <Spacer />
         <AddPost />
       </Flex>
-      {!data?.body ? (
+      {!data ? (
         <Flex minW="600px" alignItems="center" justifyContent="center">
           <Spinner />
         </Flex>
       ) : (
-        <PostTable posts={data.body} />
+        <PostTable posts={data} />
       )}
     </Layout>
   );

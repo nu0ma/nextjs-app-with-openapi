@@ -1,11 +1,7 @@
 import { apiClient } from '@/lib/apiClient';
-import useAspidaSWR from '@aspida/swr';
+import { mutate } from 'swr';
 
 export const useEditPost = (postId: number) => {
-  const { mutate } = useAspidaSWR(apiClient.posts, 'get', {
-    revalidateOnMount: true,
-  });
-
   const editPost = async (title: string, author: string) => {
     const res = await apiClient.posts._id(postId.toString()).patch({
       body: {
@@ -13,7 +9,7 @@ export const useEditPost = (postId: number) => {
         author: author,
       },
     });
-    mutate(await apiClient.posts.get());
+    mutate('/api/posts');
     return res.body;
   };
 
