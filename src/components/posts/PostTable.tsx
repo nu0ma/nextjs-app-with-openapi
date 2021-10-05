@@ -1,15 +1,6 @@
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
-  Box,
-} from '@chakra-ui/react';
+import { Table, Thead, Tbody, Tr, Th, Td, Box } from '@chakra-ui/react';
 import { Post } from 'src/api/@types';
+import { DeletePost } from './DeletePost';
 import { EditPost } from './EditPost';
 
 type Props = {
@@ -26,6 +17,7 @@ export const PostTable = (props: Props) => {
             <Th>Title</Th>
             <Th>Author</Th>
             <Th>Edit</Th>
+            <Th>Delete</Th>
           </Tr>
         </Thead>
         <Tbody>
@@ -36,6 +28,9 @@ export const PostTable = (props: Props) => {
               <Td>{post.author}</Td>
               <Td>
                 <EditPost postId={post.id} />
+              </Td>
+              <Td>
+                <DeletePost postId={post.id} postName={post.title} />
               </Td>
             </Tr>
           ))}
