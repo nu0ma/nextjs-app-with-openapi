@@ -4,9 +4,12 @@ import { Layout } from 'src/components/layout/Layout';
 import { PostTable } from 'src/components/posts/PostTable';
 import { AddPost } from 'src/components/posts/AddPost';
 import { usePost } from '../hooks/usePost';
+import useAspidaSWR from '@aspida/swr';
+import { apiClient } from '@/lib/apiClient';
 
 const Home: NextPage = () => {
-  const { posts } = usePost();
+  // const { posts } = usePost();
+  const { data, error, mutate } = useAspidaSWR(apiClient.posts, 'get');
 
   return (
     <Layout>
@@ -15,12 +18,12 @@ const Home: NextPage = () => {
         <Spacer />
         <AddPost />
       </Flex>
-      {!posts ? (
+      {!data?.body ? (
         <Flex minW="600px" alignItems="center" justifyContent="center">
           <Spinner />
         </Flex>
       ) : (
-        <PostTable posts={posts} />
+        <PostTable posts={data.body} />
       )}
     </Layout>
   );
