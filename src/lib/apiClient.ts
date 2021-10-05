@@ -3,5 +3,5 @@ import aspida from '@aspida/axios';
 import axios from 'axios';
 
 export const apiClient = api(
-  aspida(axios, { baseURL: 'http://localhost:3000' })
+  aspida(axios, { baseURL: process.env.NEXT_PUBLIC_API_URL })
 );

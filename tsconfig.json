@@ -19,7 +19,8 @@
       "@/lib/*": ["src/lib/*"],
       "@/styles/*": ["styles/*"],
       "@/hooks/*": ["src/hooks/*"],
-      "@/mocks/*": ["src/mocks/*"]
+      "@/mocks/*": ["src/mocks/*"],
+      "@/api/*": ["src/api/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

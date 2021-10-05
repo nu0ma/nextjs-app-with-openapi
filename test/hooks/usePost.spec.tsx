@@ -2,8 +2,8 @@ import { renderHook, RenderHookResult } from '@testing-library/react-hooks';
 import { ReactNode } from 'react';
 import { act } from 'react-test-renderer';
 
-import { usePost } from 'src/hooks/usePost';
-import components from 'src/mocks/components';
+import { usePost } from '@/hooks/usePost';
+import components from '@/mocks/components';
 
 describe('useDistributor', () => {
   it('should be defined', () => {
