@@ -1,4 +1,4 @@
-import { Flex, Spacer, Spinner, Text } from '@chakra-ui/react';
+import { Box, Flex, Spacer, Spinner, Text } from '@chakra-ui/react';
 import type { NextPage } from 'next';
 import { Layout } from 'src/components/layout/Layout';
 import { PostTable } from 'src/components/posts/PostTable';
@@ -15,7 +15,13 @@ const Home: NextPage = () => {
         <Spacer />
         <AddPost />
       </Flex>
-      {!posts ? <Spinner /> : <PostTable posts={posts} />}
+      {!posts ? (
+        <Flex minW="600px" alignItems="center" justifyContent="center">
+          <Spinner />
+        </Flex>
+      ) : (
+        <PostTable posts={posts} />
+      )}
     </Layout>
   );
 };
