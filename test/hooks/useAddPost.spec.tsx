@@ -3,6 +3,8 @@ import { ReactNode } from 'react';
 
 import { useAddPost } from '@/hooks/useAddPost';
 
+jest.mock('swr');
+
 describe('useAddPost', () => {
   it('should be defined', () => {
     expect(useAddPost).toBeDefined();

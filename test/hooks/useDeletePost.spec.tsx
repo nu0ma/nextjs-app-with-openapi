@@ -3,6 +3,8 @@ import { act } from 'react-test-renderer';
 
 import { useDeletePost } from '@/hooks/useDeletePost';
 
+jest.mock('swr');
+
 describe('useDeletePost', () => {
   it('should be defined', () => {
     expect(useDeletePost).toBeDefined();

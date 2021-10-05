@@ -3,6 +3,8 @@ import { act } from 'react-test-renderer';
 
 import { useEditPost } from '@/hooks/useEditPost';
 
+jest.mock('swr');
+
 describe('useEditPost', () => {
   it('should be defined', () => {
     expect(useEditPost).toBeDefined();
