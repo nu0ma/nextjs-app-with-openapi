@@ -3,7 +3,7 @@ import { act } from 'react-test-renderer';
 
 import { useDeletePost } from '@/hooks/useDeletePost';
 
-describe('useDistributor', () => {
+describe('useDeletePost', () => {
   it('should be defined', () => {
     expect(useDeletePost).toBeDefined();
   });

@@ -5,7 +5,7 @@ import { act } from 'react-test-renderer';
 import { usePost } from '@/hooks/usePost';
 import components from '@/mocks/components';
 
-describe('useDistributor', () => {
+describe('usePost', () => {
   it('should be defined', () => {
     expect(usePost).toBeDefined();
   });

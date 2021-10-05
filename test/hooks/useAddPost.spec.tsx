@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 
 import { useAddPost } from '@/hooks/useAddPost';
 
-describe('useDistributor', () => {
+describe('useAddPost', () => {
   it('should be defined', () => {
     expect(useAddPost).toBeDefined();
   });
