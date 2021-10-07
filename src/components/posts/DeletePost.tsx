@@ -9,6 +9,8 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
+  useDisclosure,
+  useToast,
 } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
 import { useDeletePost } from '@/hooks/useDeletePost';
@@ -19,7 +21,20 @@ type Props = {
 };
 
 export const DeletePost = (props: Props) => {
-  const { handleClick, onOpen, isOpen, onClose } = useDeletePost(props.postId);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const { deletePost } = useDeletePost(props.postId);
+  const toast = useToast();
+
+  const handleClick = async () => {
+    await deletePost();
+    toast({
+      title: `Deleted.`,
+      status: 'success',
+      duration: 900,
+    });
+    onClose();
+  };
 
   return (
     <>
@@ -29,6 +44,7 @@ export const DeletePost = (props: Props) => {
         size="sm"
         mr={1}
         onClick={onOpen}
+        data-testid="delete"
       />
 
       <Modal isOpen={isOpen} onClose={onClose} size="xl">
