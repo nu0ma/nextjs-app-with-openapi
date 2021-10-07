@@ -13,9 +13,9 @@ describe('Post Table', () => {
     const id = screen.getByText(components.Posts[0].id);
     const title = screen.getByText(components.Posts[0].title);
     const author = screen.getByText(components.Posts[0].author);
-    expect(id).not.toBe(null);
-    expect(title).not.toBe(null);
-    expect(author).not.toBe(null);
+    expect(id).toBeInTheDocument();
+    expect(title).toBeInTheDocument();
+    expect(author).toBeInTheDocument();
   });
 
   test('記事の編集ができる', async () => {
@@ -33,7 +33,7 @@ describe('Post Table', () => {
     await waitFor(() => {
       fireEvent.submit(screen.getByText('決定'));
     });
-    expect(screen.getByText(`Edit ${newTitle}`)).not.toBe(null);
+    expect(screen.getByText(`Edit ${newTitle}`)).toBeInTheDocument();
   });
 
   test('記事の削除ができる', async () => {
@@ -42,7 +42,7 @@ describe('Post Table', () => {
     fireEvent.click(screen.getByText('決定'));
 
     await waitFor(() => {
-      expect(screen.getByText('Deleted.')).not.toBe(null);
+      expect(screen.getByText('Deleted.')).toBeInTheDocument();
     });
   });
 });
