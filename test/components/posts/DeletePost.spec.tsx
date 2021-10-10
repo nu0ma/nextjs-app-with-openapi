@@ -22,6 +22,10 @@ describe('Delete Post', () => {
     fireEvent.click(screen.getByTestId('delete'));
     fireEvent.click(screen.getByText('決定'));
 
+    await waitFor(() => {
+      fireEvent.submit(screen.getByText('決定'));
+    });
+
     expect(mockedDeletePost).toHaveBeenCalled();
   });
 });

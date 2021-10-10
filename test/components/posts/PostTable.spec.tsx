@@ -33,7 +33,8 @@ describe('Post Table', () => {
     await waitFor(() => {
       fireEvent.submit(screen.getByText('決定'));
     });
-    expect(screen.getByText(`Edit ${newTitle}`)).toBeInTheDocument();
+
+    expect(await screen.findByText(/updated title/)).toBeInTheDocument();
   });
 
   test('記事の削除ができる', async () => {

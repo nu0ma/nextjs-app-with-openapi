@@ -22,6 +22,7 @@ module.exports = {
     // '^@/store/(.*)$': '<rootDir>/src/store/$1',
     '^@/lib/(.*)$': '<rootDir>/src/lib/$1',
     '^@/api/(.*)$': '<rootDir>/src/api/$1',
+    '^@/pages/(.*)$': '<rootDir>/src/pages/$1',
     // '^@/(.*)$': '<rootDir>/src/$1',
     // '(.*)$': '<rootDir>/$1',
   },

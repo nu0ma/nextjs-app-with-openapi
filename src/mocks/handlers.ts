@@ -8,6 +8,11 @@ export const handlers = [
     return res(ctx.status(200), ctx.json(components.Posts));
   }),
 
+  // 記事一覧取得
+  rest.get('/api/posts', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(components.Posts));
+  }),
+
   // 記事追加
   rest.post<Post, Post>('/posts', (req, res, ctx) => {
     return res(
