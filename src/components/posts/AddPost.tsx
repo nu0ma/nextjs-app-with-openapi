@@ -55,7 +55,7 @@ export const AddPost = () => {
   return (
     <>
       <Button colorScheme="teal" variant="solid" onClick={onOpen}>
-        追加
+        Add
       </Button>
 
       <Modal isOpen={isOpen} onClose={onClose} size="xl">

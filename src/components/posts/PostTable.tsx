@@ -9,8 +9,8 @@ type Props = {
 
 export const PostTable = (props: Props) => {
   return (
-    <Box border="1px">
-      <Table minW="800px" role="table">
+    <Box border="1px" overflowX="auto">
+      <Table role="table">
         <Thead>
           <Tr>
             <Th>ID</Th>
