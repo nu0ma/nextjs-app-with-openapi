@@ -1,23 +1,8 @@
 import type { NextPage } from 'next';
-import { useEffect, useState } from 'react';
-import { apiClient } from '../lib/apiClient';
+import { usePost } from '../hooks/usePost';
 
 const Home: NextPage = () => {
-  const [posts, setPosts] = useState<
-    { id: number; title: string; author: string }[]
-  >([]);
-
-  useEffect(() => {
-    const fetchPost = async () => {
-      const res = await apiClient.posts.get({
-        query: {
-          id: '1',
-        },
-      });
-      setPosts(res.body);
-    };
-    fetchPost();
-  }, []);
+  const { posts } = usePost();
 
   return <div>{JSON.stringify(posts)}</div>;
 };
