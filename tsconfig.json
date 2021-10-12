@@ -16,10 +16,11 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["components/*"],
-      "@/lib/*": ["lib/*"],
+      "@/lib/*": ["src/lib/*"],
       "@/styles/*": ["styles/*"],
-      "@/hooks/*": ["hooks/*"],
-      "@/mocks/*": ["mocks/*"]
+      "@/hooks/*": ["src/hooks/*"],
+      "@/mocks/*": ["src/mocks/*"],
+      "@/api/*": ["src/api/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

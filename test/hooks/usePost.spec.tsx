@@ -5,7 +5,7 @@ import { act } from 'react-test-renderer';
 import { usePost } from '@/hooks/usePost';
 import components from '@/mocks/components';
 
-describe('useDistributor', () => {
+describe('usePost', () => {
   it('should be defined', () => {
     expect(usePost).toBeDefined();
   });
@@ -19,7 +19,7 @@ describe('useDistributor', () => {
     hook = renderHook(() => usePost());
   });
 
-  test('記事を取得できる', async () => {
+  test('Can get posts', async () => {
     await act(async () => {
       expect(hook.result.current.posts).toEqual(undefined);
       await hook.waitFor(() => hook.result.current.posts !== undefined);

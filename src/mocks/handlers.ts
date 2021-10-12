@@ -36,14 +36,7 @@ export const handlers = [
   ),
 
   // 記事削除
-  rest.delete<Post, Post>('/posts', (req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json({
-        id: 99,
-        title: req.body.title,
-        author: req.body.author,
-      })
-    );
+  rest.delete<Post, Post>('/posts/:id', (req, res, ctx) => {
+    return res(ctx.status(200));
   }),
 ];
