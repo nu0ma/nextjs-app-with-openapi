@@ -7,6 +7,12 @@ import PostPage from '@/pages/index';
 import { SWRConfig } from 'swr';
 import components from '@/mocks/components';
 
+jest.mock('next/router', () => ({
+  useRouter: () => ({
+    router: jest.mock,
+  }),
+}));
+
 describe('Post Page', () => {
   beforeEach(async () => {
     render(

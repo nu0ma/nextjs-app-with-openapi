@@ -14,7 +14,7 @@ describe('Add Post', () => {
   });
 
   test('タイトルやIDを何も入力していない時は記事を追加できない', async () => {
-    fireEvent.click(screen.getByText('追加'));
+    fireEvent.click(screen.getByText('Add'));
     await waitFor(() => {
       fireEvent.submit(screen.getByText('決定'));
     });
@@ -22,7 +22,7 @@ describe('Add Post', () => {
   });
 
   test('IDだけが入力されていても記事を追加できない', async () => {
-    fireEvent.click(screen.getByText('追加'));
+    fireEvent.click(screen.getByText('Add'));
     const input = screen.getByLabelText('ID');
     fireEvent.change(input, { target: { value: '123' } });
     await waitFor(() => {
@@ -33,7 +33,7 @@ describe('Add Post', () => {
   });
 
   test('タイトルだけが入力されていても記事を追加できない', async () => {
-    fireEvent.click(screen.getByText('追加'));
+    fireEvent.click(screen.getByText('Add'));
     const input = screen.getByLabelText('Author');
 
     fireEvent.change(input, { target: { value: 'test title' } });
@@ -45,7 +45,7 @@ describe('Add Post', () => {
   });
 
   test('著者だけが入力されていても記事を追加できない', async () => {
-    fireEvent.click(screen.getByText('追加'));
+    fireEvent.click(screen.getByText('Add'));
     const input = screen.getByLabelText('Author');
     fireEvent.change(input, { target: { value: 'test user' } });
     await waitFor(() => {
@@ -56,7 +56,7 @@ describe('Add Post', () => {
   });
 
   test('全ての項目が入力されていると記事を追加できる', async () => {
-    fireEvent.click(screen.getByText('追加'));
+    fireEvent.click(screen.getByText('Add'));
     const input1 = screen.getByLabelText('ID');
     const input2 = screen.getByLabelText('Title');
     const input3 = screen.getByLabelText('Author');
