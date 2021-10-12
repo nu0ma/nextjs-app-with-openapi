@@ -1,0 +1,473 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "api2",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/posts": {
+      "parameters": [],
+      "get": {
+        "summary": "記事一覧処理",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "User Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "description": "",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "x-examples": {
+                    "example-1": [
+                      {
+                        "id": 2,
+                        "title": "test",
+                        "author": "nu0ma"
+                      },
+                      {
+                        "id": 3,
+                        "title": "mockserver",
+                        "author": "typicode"
+                      }
+                    ]
+                  },
+                  "items": {
+                    "$ref": "#/components/schemas/Post"
+                  }
+                },
+                "examples": {
+                  "example": {
+                    "value": [
+                      {
+                        "id": 1,
+                        "title": "json-server",
+                        "author": "typicode"
+                      },
+                      {
+                        "id": 2,
+                        "title": "test",
+                        "author": "nu0ma"
+                      },
+                      {
+                        "id": 3,
+                        "title": "mockserver",
+                        "author": "typicode"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User Not Found"
+          }
+        },
+        "operationId": "get-users-userId",
+        "description": "記事取得",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "id"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "title"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "author"
+          }
+        ]
+      },
+      "post": {
+        "summary": "記事登録",
+        "operationId": "post-posts",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Post"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "id": 6,
+                      "title": "updated post",
+                      "author": "test user"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "author": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "id": 3,
+                    "title": "mockserver",
+                    "author": "typicode"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "記事追加"
+      }
+    },
+    "/comments": {
+      "post": {
+        "summary": "コメント追加",
+        "operationId": "post-user",
+        "responses": {
+          "200": {
+            "description": "User Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Comment"
+                },
+                "examples": {
+                  "example": {
+                    "value": {
+                      "id": 1,
+                      "body": "some comment1",
+                      "postId": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing Required Information"
+          },
+          "409": {
+            "description": "Email Already Taken"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "body": {
+                    "type": "string"
+                  },
+                  "postId": {
+                    "type": "number"
+                  }
+                }
+              },
+              "examples": {
+                "example": {
+                  "value": {
+                    "id": 4,
+                    "body": "somecomment3",
+                    "postId": 3
+                  }
+                }
+              }
+            }
+          },
+          "description": "Post the necessary fields for the API to create a new user."
+        },
+        "description": "コメント追加"
+      },
+      "parameters": [],
+      "get": {
+        "summary": "コメント取得",
+        "operationId": "get-comments",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "description": "",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "x-examples": {
+                    "example-1": [
+                      {
+                        "id": 3,
+                        "body": "some comment3",
+                        "postId": 3
+                      },
+                      {
+                        "id": 4,
+                        "body": "some comment3",
+                        "postId": 3
+                      }
+                    ]
+                  },
+                  "items": {
+                    "$ref": "#/components/schemas/Comment"
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": [
+                      {
+                        "id": 3,
+                        "body": "some comment3",
+                        "postId": 3
+                      },
+                      {
+                        "id": 4,
+                        "body": "some comment3",
+                        "postId": 3
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "postId"
+          }
+        ],
+        "description": "コメント取得"
+      }
+    },
+    "/posts/{id}": {
+      "get": {
+        "summary": "個別記事取得",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Post"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "id": 6,
+                      "title": "test",
+                      "author": "nu0ma"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-posts",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "id"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "title"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "author"
+          }
+        ],
+        "description": ""
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "patch": {
+        "summary": "記事更新",
+        "operationId": "patch-posts-id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Post"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "id": 2,
+                      "title": "test",
+                      "author": "nu0ma"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "author": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "記事削除",
+        "operationId": "delete-posts-id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Post": {
+        "description": "",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "author": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": ["id", "title", "author"],
+        "x-examples": {
+          "example-1": {
+            "id": 1,
+            "title": "json-server1",
+            "author": "typicode1"
+          },
+          "example-2": {
+            "id": 2,
+            "title": "test tile2",
+            "author": "typicode2"
+          },
+          "example-3": {
+            "id": 3,
+            "title": "json-server3",
+            "author": "typicode3"
+          }
+        }
+      },
+      "Comment": {
+        "description": "",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "body": {
+            "type": "string",
+            "minLength": 1
+          },
+          "postId": {
+            "type": "number"
+          }
+        },
+        "required": ["id", "body", "postId"],
+        "x-examples": {
+          "example-1": {
+            "id": 1,
+            "body": "some comment",
+            "postId": 1
+          }
+        }
+      }
+    }
+  }
+}
