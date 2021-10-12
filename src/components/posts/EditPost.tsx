@@ -1,8 +1,5 @@
 import {
-  Box,
   Button,
-  Checkbox,
-  CheckboxGroup,
   Flex,
   FormControl,
   FormErrorMessage,
@@ -16,10 +13,8 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Text,
   useDisclosure,
   useToast,
-  VStack,
 } from '@chakra-ui/react';
 import { EditIcon } from '@chakra-ui/icons';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -67,6 +62,7 @@ export const EditPost = (props: Props) => {
         size="sm"
         mr={1}
         onClick={onOpen}
+        data-testid="edit"
       />
 
       <Modal isOpen={isOpen} onClose={onClose} size="xl">
@@ -78,7 +74,7 @@ export const EditPost = (props: Props) => {
             <ModalBody>
               <Flex flexDirection="column">
                 <FormControl isInvalid={errors.title ? true : false} mb="4">
-                  <FormLabel>Title</FormLabel>
+                  <FormLabel htmlFor="title">Title</FormLabel>
                   <Input
                     id="title"
                     {...register('title', {
@@ -86,12 +82,12 @@ export const EditPost = (props: Props) => {
                     })}
                     type="text"
                   />
-                  <FormErrorMessage>
+                  <FormErrorMessage role="alert">
                     {errors.title && errors.title.message}
                   </FormErrorMessage>
                 </FormControl>
                 <FormControl isInvalid={errors.author ? true : false}>
-                  <FormLabel>Author</FormLabel>
+                  <FormLabel htmlFor="author">Author</FormLabel>
                   <Input
                     id="author"
                     {...register('author', {
@@ -99,7 +95,7 @@ export const EditPost = (props: Props) => {
                     })}
                     type="text"
                   />
-                  <FormErrorMessage>
+                  <FormErrorMessage role="alert">
                     {errors.author && errors.author.message}
                   </FormErrorMessage>
                 </FormControl>

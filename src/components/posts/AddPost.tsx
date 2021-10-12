@@ -67,7 +67,7 @@ export const AddPost = () => {
             <ModalBody>
               <Flex flexDirection="column">
                 <FormControl isInvalid={errors.id ? true : false} mb="4">
-                  <FormLabel>ID</FormLabel>
+                  <FormLabel htmlFor="id">ID</FormLabel>
                   <Input
                     id="id"
                     {...register('id', {
@@ -75,12 +75,12 @@ export const AddPost = () => {
                     })}
                     type="text"
                   />
-                  <FormErrorMessage>
+                  <FormErrorMessage role="alert">
                     {errors.id && errors.id.message}
                   </FormErrorMessage>
                 </FormControl>
                 <FormControl isInvalid={errors.title ? true : false} mb="4">
-                  <FormLabel>Title</FormLabel>
+                  <FormLabel htmlFor="title">Title</FormLabel>
                   <Input
                     id="title"
                     {...register('title', {
@@ -88,12 +88,12 @@ export const AddPost = () => {
                     })}
                     type="text"
                   />
-                  <FormErrorMessage>
+                  <FormErrorMessage role="alert">
                     {errors.title && errors.title.message}
                   </FormErrorMessage>
                 </FormControl>
                 <FormControl isInvalid={errors.author ? true : false}>
-                  <FormLabel>Author</FormLabel>
+                  <FormLabel htmlFor="author">Author</FormLabel>
                   <Input
                     id="author"
                     {...register('author', {
@@ -101,7 +101,7 @@ export const AddPost = () => {
                     })}
                     type="text"
                   />
-                  <FormErrorMessage>
+                  <FormErrorMessage role="alert">
                     {errors.author && errors.author.message}
                   </FormErrorMessage>
                 </FormControl>

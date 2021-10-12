@@ -1,14 +1,14 @@
 import { Alert, Flex, Spacer, Spinner, Text } from '@chakra-ui/react';
 import type { NextPage } from 'next';
-import { Layout } from 'src/components/layout/Layout';
-import { PostTable } from 'src/components/posts/PostTable';
-import { AddPost } from 'src/components/posts/AddPost';
+import { Layout } from '@/components/layout/Layout';
+import { PostTable } from '@/components/posts/PostTable';
+import { AddPost } from '@/components/posts/AddPost';
 
 import useSWR from 'swr';
 import { fetcher } from '@/lib/fetcher';
-import { Post } from 'src/api/@types';
+import { Post } from '@/api/@types';
 
-const Home: NextPage = () => {
+const PostPage: NextPage = () => {
   const { data, error } = useSWR<Post[]>('/api/posts', fetcher);
 
   if (error)
@@ -32,4 +32,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default PostPage;
