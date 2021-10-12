@@ -2,8 +2,8 @@
   "posts": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "title": "edit title",
+      "author": "edit author"
     },
     {
       "id": 2,
@@ -12,8 +12,33 @@
     },
     {
       "id": 3,
-      "title": "mockserver",
-      "author": "typicode"
+      "title": "1",
+      "author": "2"
+    },
+    {
+      "id": 4,
+      "title": "ad",
+      "author": "dadadddd"
+    },
+    {
+      "id": 5,
+      "title": "aa",
+      "author": "aaaa"
+    },
+    {
+      "id": 6,
+      "title": "wea",
+      "author": "fwae"
+    },
+    {
+      "id": 7,
+      "title": "wefafea",
+      "author": "fwafewafwa"
+    },
+    {
+      "id": 8,
+      "title": "fwewafewaffewafaweads",
+      "author": "dfasdf"
     }
   ],
   "comments": [
