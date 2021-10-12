@@ -10,7 +10,7 @@ import { Methods as Methods2 } from './api/posts/_id@string'
 
 // prettier-ignore
 const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
-  const prefix = (baseURL === undefined ? '' : baseURL).replace(/\/$/, '')
+  const prefix = (baseURL === undefined ? 'undefined' : baseURL).replace(/\/$/, '')
   const PATH0 = '/api/comments'
   const PATH1 = '/api/posts'
   const GET = 'GET'

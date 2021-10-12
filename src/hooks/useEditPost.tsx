@@ -1,4 +1,5 @@
 import { apiClient } from '@/lib/apiClient';
+import { mutate } from 'swr';
 
 export const useEditPost = (postId: number) => {
   const editPost = async (title: string, author: string) => {
@@ -8,6 +9,7 @@ export const useEditPost = (postId: number) => {
         author: author,
       },
     });
+    mutate('/api/posts');
     return res.body;
   };
 
