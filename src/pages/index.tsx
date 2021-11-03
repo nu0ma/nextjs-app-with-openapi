@@ -4,12 +4,11 @@ import { Layout } from '@/components/layout/Layout';
 import { PostTable } from '@/components/posts/PostTable';
 import { AddPost } from '@/components/posts/AddPost';
 
-import useSWR from 'swr';
-import { fetcher } from '@/lib/fetcher';
-import { Post } from '@/api/@types';
+import { useAspidaQuery } from '@aspida/react-query';
+import { apiClient } from '@/lib/apiClient';
 
 const PostPage: NextPage = () => {
-  const { data, error } = useSWR<Post[]>('/api/posts', fetcher);
+  const { data, error } = useAspidaQuery(apiClient.posts);
 
   if (error)
     return <Alert status="error"> Loading failed: {error.message} </Alert>;

@@ -1,12 +1,25 @@
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import { PostTable } from '@/components/posts/PostTable';
 import components from '@/mocks/components';
-
-jest.mock('swr');
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactNode } from 'react';
 
 describe('Post Table', () => {
   beforeEach(() => {
-    render(<PostTable posts={components.Posts} />);
+    const queryClient = new QueryClient({
+      defaultOptions: {
+        queries: {
+          retry: false,
+          staleTime: Infinity,
+        },
+      },
+    });
+
+    const wrapper = ({ children }: { children?: ReactNode }) => (
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    );
+
+    render(<PostTable posts={components.Posts} />, { wrapper });
   });
 
   test('propsで与えたPostsが正常に表示される', async () => {
