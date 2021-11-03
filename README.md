@@ -1,7 +1,16 @@
 ## Nextjs application based on openapi
->MSW + aspida + testing-library + Chakra UI Example
 
+> MSW + aspida + testing-library + Chakra UI + React-Query Example
 
+# Setup
 
-- `json-server --watch ./fakeApi/db.json -p 3000`
-- `yarn dev`
+```
+yarn
+npx openapi2aspida -i schema/api.json // Create API client
+json-server --watch ./Backend/db.json -p 3000  // Starting the Fake Server (using json-server)
+yarn dev
+```
+
+## Test
+
+`yarn test`
