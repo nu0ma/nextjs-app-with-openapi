@@ -1,9 +1,12 @@
-import { renderHook, RenderHookResult } from '@testing-library/react-hooks';
-import { act } from 'react-test-renderer';
+import { ReactNode } from 'react';
+import {
+  renderHook,
+  RenderHookResult,
+  act,
+} from '@testing-library/react-hooks';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { useEditPost } from '@/hooks/useEditPost';
-
-jest.mock('swr');
 
 describe('useEditPost', () => {
   it('should be defined', () => {
@@ -13,7 +16,22 @@ describe('useEditPost', () => {
   let hook: RenderHookResult<number, ReturnType<typeof useEditPost>>;
 
   beforeEach(() => {
-    hook = renderHook((props) => useEditPost(props), { initialProps: 99 });
+    const queryClient = new QueryClient({
+      defaultOptions: {
+        queries: {
+          retry: false,
+          staleTime: Infinity,
+        },
+      },
+    });
+
+    const wrapper = ({ children }: Number & { children?: ReactNode }) => (
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    );
+    hook = renderHook((props) => useEditPost(props), {
+      initialProps: 99,
+      wrapper,
+    });
   });
 
   test('Edit Post', async () => {

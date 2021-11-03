@@ -2,13 +2,8 @@
   "posts": [
     {
       "id": 1,
-      "title": "edit title",
-      "author": "edit author"
-    },
-    {
-      "id": 2,
-      "title": "typescript",
-      "author": "typicode"
+      "title": "te",
+      "author": "te"
     },
     {
       "id": 3,
@@ -26,11 +21,6 @@
       "author": "aaaa"
     },
     {
-      "id": 6,
-      "title": "wea",
-      "author": "fwae"
-    },
-    {
       "id": 7,
       "title": "wefafea",
       "author": "fwafewafwa"
@@ -39,6 +29,21 @@
       "id": 8,
       "title": "fwewafewaffewafaweads",
       "author": "dfasdf"
+    },
+    {
+      "id": 9,
+      "title": "awfawfweafw",
+      "author": "fwefawfewa"
+    },
+    {
+      "id": 10,
+      "title": "!",
+      "author": "!!!"
+    },
+    {
+      "id": 12,
+      "title": "121",
+      "author": "2"
     }
   ],
   "comments": [

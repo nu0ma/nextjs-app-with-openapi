@@ -1,8 +1,10 @@
 import { apiClient } from '@/lib/apiClient';
-import { Post } from 'src/api/@types';
-import { mutate } from 'swr';
+
+import { useQueryClient } from 'react-query';
 
 export const useAddPost = () => {
+  const queryClient = useQueryClient();
+
   const addPost = async (id: string, title: string, author: string) => {
     const newPost = {
       id: Number(id),
@@ -14,13 +16,8 @@ export const useAddPost = () => {
       body: newPost,
     });
 
-    mutate(
-      '/api/posts',
-      async (posts: Post[]) => {
-        return [...posts, res.body];
-      },
-      false
-    );
+    queryClient.invalidateQueries(apiClient.posts.$path());
+
     return res.body;
   };
 

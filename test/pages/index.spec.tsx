@@ -4,8 +4,10 @@ import {
   waitForElementToBeRemoved,
 } from '@testing-library/react';
 import PostPage from '@/pages/index';
-import { SWRConfig } from 'swr';
 import components from '@/mocks/components';
+
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactNode } from 'react';
 
 jest.mock('next/router', () => ({
   useRouter: () => ({
@@ -15,11 +17,19 @@ jest.mock('next/router', () => ({
 
 describe('Post Page', () => {
   beforeEach(async () => {
-    render(
-      <SWRConfig value={{ dedupingInterval: 0 }}>
-        <PostPage />
-      </SWRConfig>
+    const queryClient = new QueryClient({
+      defaultOptions: {
+        queries: {
+          retry: false,
+          staleTime: Infinity,
+        },
+      },
+    });
+
+    const wrapper = ({ children }: { children?: ReactNode }) => (
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     );
+    render(<PostPage />, { wrapper });
   });
 
   test('Loading', async () => {

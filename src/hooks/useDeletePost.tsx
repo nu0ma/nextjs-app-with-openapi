@@ -1,18 +1,13 @@
 import { apiClient } from '@/lib/apiClient';
-import { Post } from 'src/api/@types';
-import { mutate } from 'swr';
+import { useQueryClient } from 'react-query';
 
 export const useDeletePost = (postId: number) => {
+  const queryClient = useQueryClient();
+
   const deletePost = async () => {
     const res = await apiClient.posts._id(postId.toString()).delete();
-    mutate(
-      '/api/posts',
-      async (posts: Post[]) => {
-        const filteredPosts = posts.filter((post) => post.id !== postId);
-        return filteredPosts;
-      },
-      false
-    );
+    queryClient.invalidateQueries(apiClient.posts.$path());
+
     return res.body;
   };
 

@@ -1,9 +1,8 @@
 import { renderHook, RenderHookResult } from '@testing-library/react-hooks';
 import { ReactNode } from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { useAddPost } from '@/hooks/useAddPost';
-
-jest.mock('swr');
 
 describe('useAddPost', () => {
   it('should be defined', () => {
@@ -16,7 +15,19 @@ describe('useAddPost', () => {
   >;
 
   beforeEach(() => {
-    hook = renderHook(() => useAddPost());
+    const queryClient = new QueryClient({
+      defaultOptions: {
+        queries: {
+          retry: false,
+          staleTime: Infinity,
+        },
+      },
+    });
+
+    const wrapper = ({ children }: { children?: ReactNode }) => (
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    );
+    hook = renderHook(() => useAddPost(), { wrapper });
   });
 
   test('Add Post', async () => {

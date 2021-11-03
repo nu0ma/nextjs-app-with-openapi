@@ -2,8 +2,8 @@ import { renderHook, RenderHookResult } from '@testing-library/react-hooks';
 import { act } from 'react-test-renderer';
 
 import { useDeletePost } from '@/hooks/useDeletePost';
-
-jest.mock('swr');
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactNode } from 'react';
 
 describe('useDeletePost', () => {
   it('should be defined', () => {
@@ -13,7 +13,22 @@ describe('useDeletePost', () => {
   let hook: RenderHookResult<number, ReturnType<typeof useDeletePost>>;
 
   beforeEach(() => {
-    hook = renderHook((props) => useDeletePost(props), { initialProps: 99 });
+    const queryClient = new QueryClient({
+      defaultOptions: {
+        queries: {
+          retry: false,
+          staleTime: Infinity,
+        },
+      },
+    });
+
+    const wrapper = ({ children }: Number & { children?: ReactNode }) => (
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    );
+    hook = renderHook((props) => useDeletePost(props), {
+      initialProps: 99,
+      wrapper,
+    });
   });
 
   test('Delete Post', async () => {
