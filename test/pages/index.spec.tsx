@@ -32,10 +32,6 @@ describe('Post Page', () => {
     render(<PostPage />, { wrapper });
   });
 
-  test('Loading', async () => {
-    expect(await screen.findByText(/Loading/)).toBeInTheDocument();
-  });
-
   test('apiからのデータが表示される', async () => {
     await waitForElementToBeRemoved(() => screen.getByText(/Loading/));
     expect(screen.getByRole('table')).toHaveTextContent(
