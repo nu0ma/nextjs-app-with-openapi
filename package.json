@@ -7,11 +7,18 @@
     "dev:next": "next dev -p 1234",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate": "npx openapi2aspida -i schema/api.json",
+    "aspida": "npx aspida"
   },
   "dependencies": {
     "@aspida/axios": "^1.7.1",
+    "@chakra-ui/icons": "^1.1.1",
+    "@chakra-ui/react": "^1.7.2",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
     "axios": "^0.22.0",
+    "framer-motion": "^4",
     "next": "11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2"
