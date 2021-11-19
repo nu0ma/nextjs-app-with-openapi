@@ -3,17 +3,17 @@
     {
       "id": 1,
       "title": "json-server",
-      "author": "typicode"
+      "author": "typecode"
     },
     {
       "id": 2,
       "title": "typescript",
-      "author": "typicode"
+      "author": "typecode"
     },
     {
       "id": 3,
       "title": "mockserver",
-      "author": "typicode"
+      "author": "typecode"
     }
   ],
   "comments": [
