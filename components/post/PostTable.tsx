@@ -1,13 +1,4 @@
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
-} from '@chakra-ui/react';
+import { Table, Thead, Tbody, Tfoot, Tr, Th, Td } from '@chakra-ui/react';
 import { Post } from '../../api/@types';
 
 type Props = {
@@ -17,7 +8,7 @@ type Props = {
 export const PostTable = (props: Props) => {
   return (
     <>
-      <Table variant="simple">
+      <Table variant="simple" minW="1000px">
         <Thead>
           <Tr>
             <Th>ID</Th>
@@ -26,31 +17,14 @@ export const PostTable = (props: Props) => {
           </Tr>
         </Thead>
         <Tbody>
-          <Tr>
-            <Td>inches</Td>
-            {/* <Td>{props.posts.map((post ) => {
-              post.
-            })}</Td> */}
-            <Td isNumeric>25.4</Td>
-          </Tr>
-          <Tr>
-            <Td>feet</Td>
-            <Td>centimetres (cm)</Td>
-            <Td isNumeric>30.48</Td>
-          </Tr>
-          <Tr>
-            <Td>yards</Td>
-            <Td>metres (m)</Td>
-            <Td isNumeric>0.91444</Td>
-          </Tr>
+          {props.posts.map((post) => (
+            <Tr>
+              <Td>{post.id}</Td>
+              <Td>{post.title}</Td>
+              <Td>{post.author}</Td>
+            </Tr>
+          ))}
         </Tbody>
-        <Tfoot>
-          <Tr>
-            <Th>To convert</Th>
-            <Th>into</Th>
-            <Th isNumeric>multiply by</Th>
-          </Tr>
-        </Tfoot>
       </Table>
     </>
   );

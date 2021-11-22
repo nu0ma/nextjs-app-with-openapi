@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "generate": "npx openapi2aspida -i schema/api.json",
-    "aspida": "npx aspida"
+    "aspida": "npx aspida",
+    "mock-server": "json-server --watch ./fakeApi/db.json -p 3001"
   },
   "dependencies": {
     "@aspida/axios": "^1.7.1",
