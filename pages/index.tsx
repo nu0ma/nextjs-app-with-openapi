@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import { Post } from '../api/@types';
 import { Layout } from '../components/layout/Layout';
-import { PostTable } from '../components/post/PostTable';
+import { Posts } from '../components/post/index';
 import { apiClient } from '../lib/apiClient';
 
 const Home: NextPage = () => {
@@ -21,7 +21,7 @@ const Home: NextPage = () => {
 
   return (
     <Layout>
-      <PostTable posts={posts} />
+      <Posts posts={posts} />
     </Layout>
   );
 };

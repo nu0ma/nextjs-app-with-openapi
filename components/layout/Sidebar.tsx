@@ -28,7 +28,7 @@ const HoverLink = (props: Props) => {
 
 export const Sidebar = () => {
   return (
-    <Stack>
+    <Stack as="nav">
       <HoverLink href="/">Post</HoverLink>
       <HoverLink href="/user">User</HoverLink>
     </Stack>
