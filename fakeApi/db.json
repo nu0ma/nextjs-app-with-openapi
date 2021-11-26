@@ -14,6 +14,36 @@
       "id": 3,
       "title": "mockserver",
       "author": "typecode"
+    },
+    {
+      "id": 23,
+      "title": "added post",
+      "author": "added author"
+    },
+    {
+      "id": 24,
+      "title": "added post 2",
+      "author": "added author 2"
+    },
+    {
+      "id": 25,
+      "title": "added post 2",
+      "author": "added author 2"
+    },
+    {
+      "id": "122",
+      "title": "hooks",
+      "author": "test user"
+    },
+    {
+      "id": "1223",
+      "title": "fewafew",
+      "author": "fewafeawfwa"
+    },
+    {
+      "id": "fweafe",
+      "title": "fwa",
+      "author": "ewweweewwe"
     }
   ],
   "comments": [
