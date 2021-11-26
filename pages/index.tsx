@@ -1,7 +1,9 @@
+import { Flex, Spacer, Text } from '@chakra-ui/layout';
 import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import { Post } from '../api/@types';
 import { Layout } from '../components/layout/Layout';
+import { AddPost } from '../components/post/AddPost';
 import { PostTable } from '../components/post/PostTable';
 import { apiClient } from '../lib/apiClient';
 
@@ -21,9 +23,12 @@ const Home: NextPage = () => {
 
   return (
     <Layout>
-      {JSON.stringify(posts)}
-
-      <PostTable />
+      <Flex alignItems="center">
+        <Text fontSize="4xl">Post</Text>
+        <Spacer></Spacer>
+        <AddPost />
+      </Flex>
+      <PostTable posts={posts} />
     </Layout>
   );
 };
