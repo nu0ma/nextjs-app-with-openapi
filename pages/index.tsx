@@ -21,9 +21,7 @@ const Home: NextPage = () => {
 
   return (
     <Layout>
-      {JSON.stringify(posts)}
-
-      <PostTable />
+      <PostTable posts={posts} />
     </Layout>
   );
 };

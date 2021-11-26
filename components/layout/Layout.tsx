@@ -17,9 +17,9 @@ export const Layout = ({ children }: { children: ReactNode }) => {
         </Box>
 
         {/* コンテンツ */}
-        <main>
+        <Box as="main" width="full">
           <Box p={2}>{children}</Box>
-        </main>
+        </Box>
       </Flex>
     </Box>
   );
